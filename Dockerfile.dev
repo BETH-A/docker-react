@@ -1,0 +1,11 @@
+FROM node:alpine
+
+WORKDIR '/app'
+
+COPY package.json .
+RUN npm install
+
+# not required for dev Dockerfile.dev as is covered by docker-compose.yml, but do need in the production Dockerfile
+COPY . .
+
+CMD [ "npm", "run", "start" ]
